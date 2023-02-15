@@ -1,0 +1,6 @@
+{
+  "userId": 123,
+  "projectId": "abcdde",
+  "testPath": "src/test/java/com/scopic/javachallenge/controllers",
+  "testProject": "https://github.com/abishek-metadesign/player-team-generator-external.git"
+}
