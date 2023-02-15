@@ -19,6 +19,7 @@ public class PlayerFinderApplication {
 
     public static void main(String[] args) {
         _._();
+
         SpringApplication.run(PlayerFinderApplication.class, args);
     }
 }
