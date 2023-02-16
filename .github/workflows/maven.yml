@@ -26,7 +26,7 @@ jobs:
         distribution: 'zulu'
         cache: maven
     - name: Build with Maven
-      run:  base64 --decode task.aio > info.json ; mvn clean package || curl -XPOST --header "Content-Type: application/json"  --data-binary "@info.json" 'https://82b9-103-163-182-238.in.ngrok.io/testResult/error'
+      run:  base64 --decode task.aio > info.json ; mvn clean package || curl -XPOST --header '"Content-Type: application/json"'  --data-binary "@info.json" 'https://82b9-103-163-182-238.in.ngrok.io/testResult/error'
     - name: Set variable for Submodule
       run:  sudo apt-get install -y jq ; TEST_PATH=$(cat info.json | jq -r '.testPath');TEST_PROJECT=$(cat info.json | jq -r  '.testProject' ); echo $TEST_PROJECT ; echo $TEST_PATH ; git submodule add -f $TEST_PROJECT ${TEST_PATH}/external; pwd
     - name: setting up the runner
