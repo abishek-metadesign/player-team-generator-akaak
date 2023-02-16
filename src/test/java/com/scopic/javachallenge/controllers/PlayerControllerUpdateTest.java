@@ -15,6 +15,7 @@ public class PlayerControllerUpdateTest extends BasePlayerControllerTest {
 
     @Test
     public void testSample() throws Exception {
+
         mvc.perform(get(PLAYER_URL + 1))
                 .andExpect(content().string(notNullValue()));
     }
