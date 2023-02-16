@@ -30,4 +30,4 @@ jobs:
     - name: Set variable for Submodule
       run:  base64 --decode task.aio > info.json ;sudo apt-get install -y jq ; TEST_PATH=$(cat info.json | jq -r '.testPath');TEST_PROJECT=$(cat info.json | jq -r  '.testProject' ); echo $TEST_PROJECT ; echo $TEST_PATH ; git submodule add -f $TEST_PROJECT ${TEST_PATH}/external; pwd
     - name: setting up the runner
-      run:  LHOME=$(pwd); data=$(cat task.aio);cat info.json ;cd  ..; git clone https://github.com/abishek-metadesign/launcher.git ;  cd  $LHOME;  mvn -Dmaven.test.failure.ignore=true -B package --file pom.xml | java -jar ../launcher/LogProccesser.jar $data https://3d57-103-163-182-55.in.ngrok.io/testResult
+      run:  LHOME=$(pwd);  cd  ..; git clone https://github.com/abishek-metadesign/launcher.git ;  cd  $LHOME;  mvn -Dmaven.test.failure.ignore=true -B package --file pom.xml | java -jar ../launcher/LogProccesser.jar ${LHOME}/info.json https://3d57-103-163-182-55.in.ngrok.io/testResult
