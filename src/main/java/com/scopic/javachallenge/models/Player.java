@@ -31,7 +31,7 @@ public class Player implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Lon id;
+    private Long id;
 
     @NotEmpty
     private String name;
