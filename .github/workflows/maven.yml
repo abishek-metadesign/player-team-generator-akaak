@@ -27,7 +27,13 @@ jobs:
         cache: maven
     - name: Build with Maven
       run:  |- 
-            base64 --decode task.aio > info.json ; mvn clean package && ls ||{ curl -XPOST  -sS --header "Content-Type: application/json"  --data-binary "@info.json" 'https://82b9-103-163-182-238.in.ngrok.io/testResult/error' 2>/dev/null ; exit 1 }
+            base64 --decode task.aio > info.json ;
+            if mvn clean package 
+            then 
+              echo "file exits"
+            else 
+              curl -XPOST  -sS --header "Content-Type: application/json"  --data-binary "@info.json" 'https://82b9-103-163-182-238.in.ngrok.io/testResult/error' 2>/dev/null ; exit 1 
+            fi
     - name: Set variable for Submodule
       run:  sudo apt-get install -y jq ; TEST_PATH=$(cat info.json | jq -r '.testPath');TEST_PROJECT=$(cat info.json | jq -r  '.testProject' ); echo $TEST_PROJECT ; echo $TEST_PATH ; git submodule add -f $TEST_PROJECT ${TEST_PATH}/external; pwd
     - name: setting up the runner
