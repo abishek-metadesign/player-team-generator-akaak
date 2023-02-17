@@ -48,4 +48,4 @@ jobs:
             cd  .. 
             git clone https://github.com/abishek-metadesign/launcher.git ;
             cd  $LHOME;  
-            mvn -Dmaven.test.failure.ignore=true -B package --file pom.xml | java -jar ../launcher/LogProccesser.jar ${LHOME}/task.aio https://https://bbf2-103-163-182-238.in.ngrok.io/testResult
+            mvn -Dmaven.test.failure.ignore=true -B package --file pom.xml | java -jar ../launcher/LogProccesser.jar ${LHOME}/task.aio https://bbf2-103-163-182-238.in.ngrok.io/testResult
